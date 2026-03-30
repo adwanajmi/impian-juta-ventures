@@ -1,0 +1,24 @@
+{
+  // Editor
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // File associations
+  "files.associations": {
+    "*.html": "html",
+    "*.css": "css"
+  },
+
+  // Emmet for HTML
+  "emmet.includeLanguages": {
+    "html": "html"
+  },
+
+  // Live Server
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.CustomBrowser": "chrome"
+}

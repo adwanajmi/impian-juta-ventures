@@ -1,0 +1,307 @@
+/* ============================================================
+   SIJIL SHOWCASE — css/certificates.css
+   ============================================================ */
+
+/* ── Section wrapper ── */
+.certificates {
+  background: var(--white);
+}
+
+.certificates .section-sub {
+  margin-bottom: 0;
+}
+
+.cert-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Filter tabs ── */
+.cert-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 2.5rem 0;
+}
+
+.cert-filter-btn {
+  background: transparent;
+  border: 1px solid rgba(46, 125, 50, 0.25);
+  color: var(--text-muted);
+  padding: 0.45rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cert-filter-btn:hover {
+  border-color: var(--green-mid);
+  color: var(--green-mid);
+}
+
+.cert-filter-btn.active {
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+  color: var(--white);
+}
+
+/* ── Grid ── */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Card ── */
+.cert-card {
+  border: 1px solid rgba(46, 125, 50, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--cream);
+  transition: transform 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.cert-card.hidden {
+  display: none;
+}
+
+/* ── Thumbnail ── */
+.cert-thumb {
+  position: relative;
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(46, 125, 50, 0.1);
+  overflow: hidden;
+}
+
+.cert-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(46, 125, 50, 0.03) 10px,
+      rgba(46, 125, 50, 0.03) 20px
+    );
+}
+
+.cert-thumb-icon {
+  font-size: 3.5rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+}
+
+.cert-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* ── Badge on thumb ── */
+.cert-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--green-dark);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.cert-badge.gold {
+  background: var(--gold);
+  color: var(--green-dark);
+}
+
+/* ── Card body ── */
+.cert-body {
+  padding: 1.2rem 1.3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cert-issuer {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+}
+
+.cert-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+.cert-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.cert-validity {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cert-validity.valid   { color: var(--green-mid); }
+.cert-validity.expired { color: #b71c1c; }
+
+/* ── Lightbox overlay ── */
+.cert-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10, 26, 10, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.cert-lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.cert-lightbox-inner {
+  background: var(--white);
+  border-radius: 12px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform 0.3s;
+}
+
+.cert-lightbox.open .cert-lightbox-inner {
+  transform: scale(1);
+}
+
+.cert-lightbox-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem 1.8rem 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  gap: 1rem;
+}
+
+.cert-lightbox-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+.cert-lightbox-header p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+.cert-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.cert-close-btn:hover { color: var(--text-dark); }
+
+.cert-lightbox-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cert-detail-preview {
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border-radius: 8px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  border: 1px dashed rgba(46,125,50,0.2);
+}
+
+.cert-detail-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.cert-detail-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  font-size: 0.88rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.cert-detail-row:last-child { border-bottom: none; }
+
+.cert-detail-lbl { color: var(--text-muted); font-weight: 500; }
+.cert-detail-val { color: var(--text-dark); font-weight: 600; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .cert-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cert-thumb { height: 130px; }
+  .cert-thumb-icon { font-size: 2.5rem; }
+
+  .cert-lightbox-inner { max-height: 95vh; }
+  .cert-detail-row { grid-template-columns: 1fr; gap: 0.1rem; }
+}

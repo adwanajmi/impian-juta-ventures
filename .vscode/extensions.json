@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ritwickdey.liveserver",        // Live Server — preview in browser instantly
+    "esbenp.prettier-vscode",       // Prettier — auto-format HTML & CSS
+    "ecmel.vscode-html-css",        // HTML CSS Support — autocomplete class names
+    "formulahendry.auto-rename-tag",// Auto Rename Tag — rename paired HTML tags
+    "christian-kohler.path-intellisense", // Path Intellisense — autocomplete file paths
+    "streetsidesoftware.code-spell-checker" // Spell Checker
+  ]
+}
