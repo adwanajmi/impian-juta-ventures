@@ -312,9 +312,15 @@ function renderCertificates(filter = 'all') {
     card.style.transform  = 'translateY(20px)';
     card.style.transition = `opacity 0.4s ease ${i * 0.05}s, transform 0.4s ease ${i * 0.05}s`;
 
+    const imgSrc = `img/certificates/${cert.id}.jpg`;
     card.innerHTML = `
       <div class="cert-thumb">
-        <div class="cert-thumb-icon">${cert.icon}</div>
+        <img
+          src="${imgSrc}"
+          alt="${cert.title}"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="cert-thumb-icon" style="display:none;">${cert.icon}</div>
         <span class="cert-badge ${cert.badgeClass}">${cert.badge}</span>
       </div>
       <div class="cert-body">
@@ -346,7 +352,14 @@ function openLightbox(cert) {
 
   document.getElementById('lbTitle').textContent    = cert.title;
   document.getElementById('lbSubtitle').textContent = cert.issuer + ' — ' + cert.subtitle;
-  document.getElementById('lbIcon').textContent     = cert.icon;
+  document.getElementById('lbIcon').innerHTML = `
+    <img
+      src="img/certificates/${cert.id}.jpg"
+      alt="${cert.title}"
+      style="width:100%; height:100%; object-fit:contain; border-radius:6px;"
+      onerror="this.outerHTML='<span style=\'font-size:4rem\'>${cert.icon}</span>'"
+    />
+  `;
 
   const rows = document.getElementById('lbRows');
   rows.innerHTML = Object.entries(cert.details).map(([k, v]) => `
